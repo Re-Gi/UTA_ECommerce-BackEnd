@@ -5,10 +5,10 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // get all products
 router.get('/', async (req, res) => {
-  // finds all products, including associated Category and Tag data
   try {
+    // finds all products, including associated Category and Tag data
     const productsData = await Product.findAll({
-      include: [{ model: Category }, { model: Tag }],
+      include: [{ model: Category }, { model: Tag }]
     });
     res.status(200).json(productsData);
   } catch (err) {
@@ -18,10 +18,10 @@ router.get('/', async (req, res) => {
 
 // get one product
 router.get('/:id', async (req, res) => {
-  // finds a single product by its `id`, including associated Category and Tag data
   try {
+    // finds a single product by its `id`, including associated Category and Tag data
     const productData = await Product.findByPk(req.params.id, {
-      include: [{ model: Category }, { model: Tag }],
+      include: [{ model: Category }, { model: Tag }]
     });
     res.status(200).json(productData);
   } catch (err) {
@@ -96,7 +96,10 @@ router.put('/:id', async (req, res) => {
       ]);
 
       res.status(201).json(updatedProductTags);
-    } else { res.status(200).json(product) };
+    } else {
+      // if no product tags changed, just respond
+      res.status(200).json(product)
+    };
   } catch (err) {
     res.status(400).json(err);
   };
