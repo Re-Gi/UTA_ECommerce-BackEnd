@@ -64,7 +64,7 @@ router.post('/', async (req, res) => {
 // update product
 router.put('/:id', async (req, res) => {
   try {
-    const product = await Product.update(req.body, {
+    await Product.update(req.body, {
       where: {
         id: req.params.id,
       },
@@ -98,7 +98,7 @@ router.put('/:id', async (req, res) => {
       res.status(201).json(updatedProductTags);
     } else {
       // if no product tags changed, just respond
-      res.status(200).json(product)
+      res.status(200).json(`Product #${req.params.id} updated.`)
     };
   } catch (err) {
     res.status(400).json(err);
