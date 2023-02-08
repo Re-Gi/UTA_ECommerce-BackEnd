@@ -23,7 +23,7 @@ The following steps should be taken for installation:
 
 2. Have MySQL installed to your computer. Then to set up the database on your computer, open a terminal from the 'db' folder and input `mysql -u root -p` to login. Once logged in, input `SOURCE schema.sql;` to create the new database.
 
-3. Create a '.env' folder containing the lines `DB_NAME='ecommerce_db'`, `DB_USER='<your_mysql_user>'`, and `DB_PASSWORD='<your_mysql_password>'`, replacing the angle brackets with your own mysql user and password values.
+3. Create a '.env' folder containing the lines **DB_NAME='ecommerce_db'** , **DB_USER='<your_mysql_user>'** , and **DB_PASSWORD='<your_mysql_password>'** , replacing the angle brackets with your own mysql user and password values.
 
 4. *Optional:* If you wish to add premade data to the database tables to test with, open a terminal from the package.json file and run the command `npm run seed`.
 
@@ -36,36 +36,49 @@ The following steps should be taken for installation:
 Once installation is complete, open a terminal from the package.json file and enter the command `npm start` to start the application. Once the app is listening, the following api routes can be utilized.
 
 ### Category routes
-To use category routes, follow the url of the port or a connected application with `/api/categories/`, from here you can use:  
+To use category routes, follow the url of the port or a connected application with */api/categories/* , from here you can use:  
 - A GET fetch to recieve an array containing all category objects as well as associated products.
-- A PUT fetch, sent with a body object containing a "`category_name:`" key/value pair, to create a new category object.
+- A PUT fetch, sent with a body object containing a "**category_name:** " key/value pair, to create a new category object.
 
-With the route `/api/categories/:id`, you can use:
+With the route */api/categories/:id* , you can use:
 - A GET fetch to recieve a single category object by its id, along with any associated products.
 - A PUT fetch, sent with a body object containing the key/value pair to be updated, to update a category object by its id.
 - A DELETE fetch to permanently delete a category object by its id, along with its associated products.
 
-### Product routes
-To use product routes, follow the url of the port or a connected application with `/api/products/`, from here you can use:  
-- A GET fetch to recieve an array containing all poduct objects as well as associated categories and tags.
-- A PUT fetch, sent with a body object containing the key/value pairs "`product_name:`", "`price:`", "`stock:`", and optionally "`category_name:`", "`tagIds:`", to create a new product object.
+![CategoriesGETAll](https://user-images.githubusercontent.com/119711335/217436552-80bf0f3b-acfe-43dd-9fc4-898787219fe6.png)
 
-With the route `/api/products/:id`, you can use:
+![CreateCategory](https://user-images.githubusercontent.com/119711335/217436571-be1692a4-f13d-4975-8591-2090b099dee2.png)
+
+### Product routes
+To use product routes, follow the url of the port or a connected application with */api/products/* , from here you can use:  
+- A GET fetch to recieve an array containing all poduct objects as well as associated categories and tags.
+- A PUT fetch, sent with a body object containing the key/value pairs "**product_name:** ", "**price:** ", "**stock:** ", and optionally "**category_name:** ", "**tagIds:** ", to create a new product object.
+
+With the route */api/products/:id* , you can use:
 - A GET fetch to recieve a single product object by its id, along with any associated categories and tags.
 - A PUT fetch, sent with a body object containing the key/value pair to be updated, to update a product object by its id.
 - A DELETE fetch to permanently delete a product object by its id, as well as any associated product_tags.
 
-### Tag routes
-To use tag routes, follow the url of the port or a connected application with `/api/tags/`, from here you can use:  
-- A GET fetch to recieve an array containing all tag objects as well as associated products.
-- A PUT fetch, sent with a body object containing a "`tag_name:`" key/value pair, to create a new tag object.
+![ProductsGETAll](https://user-images.githubusercontent.com/119711335/217436614-0e6d7f5a-d349-43ea-827b-99768e502c58.png)
 
-With the route `/api/tags/:id`, you can use:
+![CreateProduct](https://user-images.githubusercontent.com/119711335/217436647-64c0fb30-9652-4dea-b76a-09d5af921ef4.png)
+
+### Tag routes
+To use tag routes, follow the url of the port or a connected application with */api/tags/* , from here you can use:  
+- A GET fetch to recieve an array containing all tag objects as well as associated products.
+- A PUT fetch, sent with a body object containing a "**tag_name:** " key/value pair, to create a new tag object.
+
+With the route */api/tags/:id* , you can use:
 - A GET fetch to recieve a single tag object by its id, along with any associated products.
 - A PUT fetch, sent with a body object containing the key/value pair to be updated, to update a tag object by its id.
 - A DELETE fetch to permanently delete a tag object by its id, as well as any associated product_tags.
 
+![TagsGETAll](https://user-images.githubusercontent.com/119711335/217436701-2671fa0c-9e10-40d0-98b3-1b9b86c45b38.png)
+
+![CreateTag](https://user-images.githubusercontent.com/119711335/217436712-2eeed35b-b94c-48ef-ad90-ffb6475798bd.png)
+
 ## Demo
+[ECommerceBackend-demo.webm](https://user-images.githubusercontent.com/119711335/217434517-32b9e089-4b3a-4d93-a864-437cb3a8564a.webm)
 
 
 ## License 
