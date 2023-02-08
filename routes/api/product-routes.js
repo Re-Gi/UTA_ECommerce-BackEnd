@@ -36,12 +36,14 @@ router.post('/', async (req, res) => {
       product_name: "Basketball",
       price: 200.00,
       stock: 3,
+      category_id: 1,
       tagIds: [1, 2, 3, 4]
     }
   */
  try {
+  //creates the product
   const product = await Product.create(req.body);
-
+  //checks if the user passed in a tagId array, and creates new ProductTags if so
   if (req.body.tagIds.length) {
     const productTagIdArr = req.body.tagIds.map((tag_id) => {
       return {
@@ -64,12 +66,13 @@ router.post('/', async (req, res) => {
 // update product
 router.put('/:id', async (req, res) => {
   try {
+    // updates product
     await Product.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
-
+    //checks if the user passed in a tagId array, and updates related ProductTags if so
     if (req.body.tagIds) {
       const productTags = await ProductTag.findAll({ where: { product_id: req.params.id } });
 
@@ -108,6 +111,7 @@ router.put('/:id', async (req, res) => {
 // delete one product by its `id` value
 router.delete('/:id', async (req, res) => {
   try {
+    // deletes the product and any associated product_tags
     await Product.destroy({ where: { id: req.params.id } });
     res.status(200).json(`Poduct #${req.params.id} deleted.`);
   } catch (err) {
